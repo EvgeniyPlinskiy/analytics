@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <h1 class="mt-5 mb-5">Аналитика</h1>
-      <h3>Аналитика по визитам</h3>
+      <h1 class="mt-5 mb-5 text-secondary">Аналитика</h1>
+      <h3 class="text-secondary">Аналитика по визитам</h3>
       <div class="chart" ref="chartdiv"></div>
     </div>
   </div>

@@ -1,24 +1,26 @@
 <template>
   <div class="row">
     <div class="offset-md-3 col-md-6">
-      <h1 class="mt-5 mb-5">LeadHit</h1>
+      <h1 class="mt-5 mb-5 text-secondary">LeadHit</h1>
       <div v-if="!LEADHIT_SITE_ID">
-        <form @submit.prevent="setRequest(siteId)" class="input-group mb-3">
+        <form @submit.prevent="setRequest(siteId)" class="mb-3">
           <input
-            class="form-control"
+            class="form-control transparent-area"
             type="text"
             placeholder="Введите id сайта"
             aria-label="id"
             v-model="siteId"
           />
-          <button class="btn btn-secondary" type="submit">Войти</button>
+          <label v-if="siteId.length < 24" class="form-label mt-1 text-danger">
+          id сайта должен содержать 24 символа</label
+        ><br>
+          <button class="btn btn-secondary mt-3" type="submit">Войти</button>
         </form>
-        <label v-if="siteId.length < 24" class="form-label mt-1 text-danger">
-          id сайта должен содержать 24 символа</label>
+        
       </div>
       <div v-else>
-        <h2>Вы авторизованы</h2>
-        <button class="btn btn-danger" @click.prevent="signOut">Выйти</button>
+          <h2 class="text-secondary">Вы авторизованы</h2>
+        <button class="btn btn-danger mt-3" @click.prevent="signOut">Выйти</button>
       </div>
     </div>
   </div>
@@ -66,3 +68,23 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.transparent-area {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #fbfbff;
+  box-shadow: 0px 4px 20px rgba(193, 193, 193, 0.3);
+  border-radius: 10px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 20px rgba(15, 1, 1, 0.08);
+  }
+  &:focus {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    outline: none;
+    box-shadow: 0px 4px 20px rgba(193, 193, 193, 0.3);
+  }
+}
+</style>
