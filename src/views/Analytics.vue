@@ -1,6 +1,8 @@
 <template>
   <div class="row">
     <div class="col-12">
+      <h1 class="mt-5 mb-5">Аналитика</h1>
+      <h3>Аналитика по визитам</h3>
       <div class="chart" ref="chartdiv"></div>
     </div>
   </div>
@@ -19,7 +21,7 @@ export default {
   computed: {
     ...mapGetters(["VISITS", "LEADHIT_SITE_ID"]),
   },
-  beforeCreate() {
+  created() {
     if (this.LEADHIT_SITE_ID !== "5f8475902b0be670555f1bb3") {
       this.$router.push("/autorisation");
     }
