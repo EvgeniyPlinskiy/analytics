@@ -11,7 +11,7 @@
             aria-label="id"
             v-model="siteId"
           />
-          <label v-if="siteId.length < 24" class="form-label mt-1 text-danger">
+          <label v-if="v$.siteId.minLengthValue.$invalid " class="form-label mt-1 text-danger">
           id сайта должен содержать 24 символа</label
         ><br>
           <button class="btn btn-secondary mt-3" type="submit">Войти</button>
@@ -28,12 +28,21 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import useVuelidate from "@vuelidate/core";
+import { required, minLength  } from "@vuelidate/validators";
 import axios from "axios";
 export default {
   data() {
     return {
+      v$: useVuelidate(),
       siteId: "",
     };
+  },
+  validations() {
+    return {
+      siteId: {required,
+              minLengthValue: minLength(24)}
+    }
   },
   methods: {
     ...mapActions(["ADD_LEADHIT_SITE_ID", "DELETE_LEADHIT_SITE_ID"]),
