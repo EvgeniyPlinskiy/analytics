@@ -4,7 +4,7 @@ import vuex from 'vuex'
 
 const store = new vuex.Store({
   state: {
-    leadhit_site_id: 0,
+    leadhit_site_id: null,
     visits: [
       {"date":"2020-07-01","visits":213},
       {"date":"2020-07-02","visits":249},
